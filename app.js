@@ -107,7 +107,7 @@ async function searchBar(event) {
     event.preventDefault()
     const search_keyword = document.getElementById("search_field").value
 
-    this_data = await api_search(search_keyword)
+    const this_data = await api_search(search_keyword)
 
 
     renderSearchResult(this_data)
