@@ -114,7 +114,7 @@ async function searchBar(event) {
 }
 
 async function api_search(title) {
-    const respon = await fetch(`http://www.omdbapi.com/?t=${title}&apikey=e09eb1d6`)
+    const respon = await fetch(`https://www.omdbapi.com/?t=${title}&apikey=e09eb1d6`)
     const data = await respon.json()
 
 
