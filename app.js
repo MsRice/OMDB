@@ -93,7 +93,7 @@ async function renderMovies() {
         <h3>${movie.title}</h3>
         <h4>${movie.rating}</h4>
         </div>`
-    }).slice(0, 15).join("")
+    }).slice(0, 21).join("")
 
     // render 10 movies default
 
@@ -139,23 +139,28 @@ async function api_search(title) {
 
 
 function renderSearchResult(movie) {
+ document.querySelector(".floating__module--wrapper").scrollIntoView(true)
     const searchedMovie = document.querySelector(".module__search--wrapper")
+    
 
     const searchedHTML = movie.map((data) => {
         return `<div class="search__info--wrapper">
-                            <figure class="search__img--wrapper">
-                                <img src="${data.poster_url}" class="search__img">
-                            </figure>
-                            <div class="search__info--main">
+                    <figure class="search__img--wrapper">
+                        <img src="${data.poster_url}" class="search__img">
+                    </figure>
+                    <div class="search__info--main">
+                        <div>
                             <h1>${data.title}</h1>
                             <h4>${data.rating}</h4>
                             <h3>${data.cast}</h3>
-                            </div>
                         </div>
+                
                         <div class="search__info--para">
                             <p>About Film: ${data.plot}</p>
 
-                        </div>`
+                        </div>
+                    </div>
+                </div>`
     })
     recentString(movie[0])
 
