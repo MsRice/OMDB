@@ -182,9 +182,14 @@ section {
 
 .filter__bar--wrapper {
     width: 100%;
-    border: 5px solid chartreuse;
     display: flex;
     justify-content: right;
+    font-size: 18px;
+}
+
+.filter__bar {
+    border: 2px solid rgb(241, 150, 52);
+    color: blue;
 }
 
 /* Search */

@@ -47,7 +47,8 @@
 
                     <h1 class="main--title title">Most <span class="yellow-text">POPULAR</span></h1>
                     <div class="filter__bar--wrapper">
-                        <select id="filter__bar" onchange="filterMovies(event)">Filter Bar
+                        <label for="filter">Filter: </label>
+                        <select id="filter__bar" class="filter__bar" onchange="filterMovies(event)">
                             <option value="" disabled selected>Sort</option>
                             <option value="LOW_TO_HIGH">Rating: Low -> High</option>
                             <option value="HIGH_TO_LOW">Rating: High -> Low</option>
