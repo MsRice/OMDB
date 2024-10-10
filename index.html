@@ -46,6 +46,15 @@
                 <div class="main__wrapper">
 
                     <h1 class="main--title title">Most <span class="yellow-text">POPULAR</span></h1>
+                    <div class="filter__bar--wrapper">
+                        <select id="filter__bar" onchange="filterMovies(event)">Filter Bar
+                            <option value="" disabled selected>Sort</option>
+                            <option value="LOW_TO_HIGH">Rating: Low -> High</option>
+                            <option value="HIGH_TO_LOW">Rating: High -> Low</option>
+                            <option value="ALPHA">A -> Z</option>
+                            <option value="ALPHA_REVERSE">Z -> A</option>
+                        </select>
+                    </div>
                     <div class="main__shows--wrapper">
 
                     </div>
@@ -82,7 +91,7 @@
                 <div class="recent__shows--wrapper">
                     <h1 class="recent--title title">Most <span class="yellow-text">RECENT</span> Viewed</h1>
                     <div class="recent__show--wrapper">
-                       
+
 
                     </div>
                 </div>

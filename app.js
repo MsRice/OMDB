@@ -49,7 +49,7 @@ async function api_proc(title, id) {
                     audience_rated: data.Rated,
                     release_date: data.Released,
                     poster_url: data.Poster,
-                    rating: data.imdbRating,
+                    rating: parseFloat(data.imdbRating),
                     plot: data.Plot
 
                 }
@@ -78,13 +78,32 @@ async function here(library) {
     return (popular_result)
 }
 
-async function renderMovies() {
+async function renderMovies(filter) {
 
     const moviesWrapper = document.querySelector(".main__shows--wrapper")
 
-    popular_result = await here(popular_lib)
+    if (popular_result.length < 1) {
+        console.log(popular_result)
+        popular_result = await here(popular_lib)
 
-    console.log("plase")
+    }
+
+
+    if (filter === "LOW_TO_HIGH") {
+        popular_result.sort((a, b) => a.rating - b.rating)
+
+    } else if (filter === "HIGH_TO_LOW") {
+        popular_result.sort((a, b) => b.rating - a.rating)
+
+    }
+    else if (filter === "ALPHA") {
+        popular_result.sort((a, b) => a.title.localeCompare(b.title))
+    }
+    else if (filter === "ALPHA_REVERSE") {
+        popular_result.sort((b, a) => a.title.localeCompare(b.title))
+        console.log(popular_result)
+    }
+
     const movieHTML = popular_result.map((movie) => {
         return `<div class="show__wrapper">
         <figure class="show__img--wrapper">
@@ -101,7 +120,7 @@ async function renderMovies() {
 
 }
 
-renderMovies()
+renderMovies('None')
 
 async function searchBar(event) {
     event.preventDefault()
@@ -139,9 +158,9 @@ async function api_search(title) {
 
 
 function renderSearchResult(movie) {
- document.querySelector(".floating__module--wrapper").scrollIntoView(true)
+    document.querySelector(".floating__module--wrapper").scrollIntoView(true)
     const searchedMovie = document.querySelector(".module__search--wrapper")
-    
+
 
     const searchedHTML = movie.map((data) => {
         return `<div class="search__info--wrapper">
@@ -241,4 +260,9 @@ async function fromMainPopout(dict) {
 
 
     renderSearchResult(dict)
+}
+
+
+function filterMovies(event) {
+    renderMovies(event.target.value)
 }
